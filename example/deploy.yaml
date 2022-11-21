@@ -24,7 +24,7 @@ spec:
         version: v1
     spec:
       containers:
-        - name: contract-api
+        - name: business-api
           image: 'business-api'
           ports:
             - name: http-80
