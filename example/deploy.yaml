@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: xxl-job-test
-  namespace: contract
+  namespace: default
   labels:
     app: xxl-job-test
     app.auth.matrix.io/id: contract
