@@ -1,0 +1,57 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: xxl-job-test
+  namespace: contract
+  labels:
+    app: xxl-job-test
+    app.auth.matrix.io/id: contract
+    app.kubernetes.io/name: contract
+    app.kubernetes.io/version: v1
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xxl-job-test
+  template:
+    metadata:
+      labels:
+        app: xxl-job-test
+        app.auth.matrix.io/id: contract
+        app.kubernetes.io/name: contract
+        app.kubernetes.io/version: v1
+        version: v1
+    spec:
+      containers:
+        - name: contract-api
+          image: 'business-api'
+          ports:
+            - name: http-80
+              containerPort: 80
+              protocol: TCP
+          resources: {}
+          imagePullPolicy: Always
+        - name: xxl-job-agent
+          image: 'xxl-job-k8s-agent'
+          ports:
+            - name: http
+              containerPort: 9999
+              protocol: TCP
+          env:
+            - name: XXL_JOB_ADDR
+              value: 'http://xxl-job.company.svc.cluster.local:8080/xxl-job-admin'
+            - name: XXL_JOB_NAME
+              value: business-job
+            - name: CONTAINER_NAME
+              value: business-api
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
