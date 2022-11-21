@@ -16,7 +16,7 @@ XXL_JOB_ADDR=http://xxl-job.sk8s.cn/xxl-job-admin
 XXL_JOB_ACCESS_TOKEN=
 
 # xxljob  executor name 执行器名称 每个项目的执行器名字都不一样 
-XXL_JOB_NAME=contract-job
+XXL_JOB_NAME=business-job
 
 
 ##### k8s 配置
@@ -24,20 +24,20 @@ XXL_JOB_NAME=contract-job
 IN_CLUSTER=true
 
 # 命名空间
-NAMESPACE=contract
+NAMESPACE=default
 # pod名称
 POD_NAME=xxl-job-test-bc7d6764f-59lzp
 # 具体执行命令的容器
-CONTAINER_NAME=contract-api
+CONTAINER_NAME=business-api
 ```
 
 ## example
 
 部署参考 [deploy.yaml](./example/deploy.yaml)
 
-上面有两个容器`contract-api`,`xxl-job-agent`
+上面有两个容器`business-api`,`xxl-job-agent`
 
-其中`contract-api`是我们的业务容器, `xxl-job-agent`是执行器容器
+其中`business-api`是我们的业务容器, `xxl-job-agent`是执行器容器
 
 业务容器不需要进行任何修改，在执行器容器中需要配置环境变量
 ```yaml
