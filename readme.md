@@ -1,5 +1,9 @@
 # XXL-AGENT
 
+https://blog.marun.run/xxl-job-sidecar-yun-xing-zai-k8s-zhong/
+https://github.com/marunrun/xxl-job-k8s-agent
+
+
 基于 XXL-JOB 的分布式任务调度执行器 专给K8s使用
 
 > 历史的定时任务通过K8s的CronJob实现，每次需要拉取镜像，启动新的pod 比较浪费资源
